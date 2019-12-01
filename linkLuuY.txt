@@ -1,0 +1,10 @@
+﻿Node.js
+Ngoài ra, nếu bạn yêu cầu thiết lập nhanh nhạy hơn và đã sử dụng nodejs ...
+
+Cài đặt http-serverbằng cách gõnpm install -g http-server
+
+Thay đổi vào thư mục làm việc của bạn, nơi some.htmlcuộc sống của bạn
+
+Bắt đầu máy chủ http của bạn bằng cách phát hành http-server -c-1
+
+Điều này tạo ra một httpd Node.js phục vụ các tệp trong thư mục của bạn dưới dạng các tệp tĩnh có thể truy cập từ http://localhost:8080
