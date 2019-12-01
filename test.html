@@ -1,0 +1,53 @@
+<html>
+<head>
+	<script src="https://aframe.io/releases/0.9.2/aframe.min.js"></script>
+	<script src="https://unpkg.com/aframe-particle-system-component@1.0.9/dist/aframe-particle-system-component.min.js"></script>
+	<script>
+		// var myArray = [
+		// "h1.jpg",
+		// "h2.jpg",
+		// "h3.jpg"
+		// ];
+
+		// var randomItem = myArray[Math.floor(Math.random()*myArray.length)];
+		// console.log(randomItem);
+	</script>
+	<script>
+		AFRAME.registerComponent("randomimage", {
+			init: function() {
+				this.el.addEventListener("click", (e) => {
+					var myArray = [
+					"#sky1","#sky2","#sky3","#sky4","#sky5","#sky6","#sky7","#sky8"
+					];
+
+					var randomItem = myArray[Math.floor(Math.random()*myArray.length)];
+					
+					var sky = document.querySelector("#asky")
+					sky.setAttribute("src",randomItem);
+					console.log(randomItem);
+
+				})
+			}
+		})
+	</script> 
+</head>
+<body>
+
+	<!-- <img id="sky" src="h3.jpg"> -->
+
+	<a-scene  cursor="rayOrigin: mouse">
+		<a-assets>
+			<img id="sky1" src="h1.jpg">
+			<img id="sky2" src="h2.jpg">
+			<img id="sky3" src="h3.jpg">
+			<img id="sky4" src="h4.jpg">
+			<img id="sky5" src="h5.jpg">
+			<img id="sky6" src="h6.jpg">
+			<img id="sky7" src="h7.jpg">
+			<img id="sky8" src="h8.jpg">
+		</a-assets>
+		<a-sky id="asky" src="#sky1" ></a-sky>
+		<a-box position="-1 0.5 -3" rotation="0 45 0" color="red" randomimage></a-box>
+	</a-scene>
+</body>
+</html>

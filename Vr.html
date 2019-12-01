@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+        <!-- <script src="https://aframe.io/releases/0.9.0/aframe.js"></script> -->
+        <script src="https://aframe.io/releases/0.9.0/aframe.min.js"></script>
+       
+        <script>
+  AFRAME.registerComponent("foo", {
+    init: function() {
+      this.el.addEventListener("click", (e) => {
+        let cylinder = document.querySelector("a-cylinder")
+        cylinder.setAttribute("visible", !cylinder.getAttribute("visible"))
+      })
+    }
+  })
+</script>
+
+     <script>
+  AFRAME.registerComponent("fo2", {
+    init: function() {
+      this.el.addEventListener("click", (e) => {
+        let id_click = this.el.id;
+        id_click = "#" + id_click;
+        let video = document.querySelector(id_click)
+        video.setAttribute("position","0 3 0")
+      })
+    }
+  })
+</script> 
+
+<script>
+  var flag = 0;
+  AFRAME.registerComponent("fo1", {
+    init: function() {
+      this.el.addEventListener("click", (e) => {
+        let id_click = this.el.id;
+        let id_other_1 = "";
+        let id_other_2 = "";
+        if (flag == 0) {       
+          console.log(id_click);
+          switch(id_click) {
+            case "videoSrc1":
+              id_other_1 = "#videoSrc3";
+              id_other_2 = "#videoSrc2";
+              break;
+            case "videoSrc2":
+              id_other_1 = "#videoSrc3";
+              id_other_2 = "#videoSrc1";
+              break;
+            case "videoSrc3":
+              id_other_1 = "#videoSrc1";
+              id_other_2 = "#videoSrc2";
+              break;
+          }
+          id_click = "#" + id_click;
+          let video3 = document.querySelector(id_other_1)
+          video3.setAttribute("visible", !video3.getAttribute("visible"))
+
+ 
+
+          let video2 = document.querySelector(id_other_2)
+          video2.setAttribute("visible", !video2.getAttribute("visible"))
+
+ 
+
+          let video1 = document.querySelector(id_click)
+          video1.setAttribute("position","0 3 0")
+          video1.setAttribute("width","16" )
+          video1.setAttribute("height","9" )
+          flag = 1;
+          console.log('man hinh lon  ' + flag);
+        }
+        else
+        {
+          id_case = id_click;
+          id_click = "#" + id_click;
+          let video4 = document.querySelector(id_click) 
+          console.log(id_click);
+          switch(id_case) {
+            case "videoSrc1":         
+              video4.setAttribute("position","-10 3 0")
+              video4.setAttribute("width","3.5" )
+              video4.setAttribute("height","2.5" )
+              break;
+            case "videoSrc2": 
+              video4.setAttribute("position","0 3 0")
+              video4.setAttribute("width","3.5" )
+              video4.setAttribute("height","2.5" )
+              break;
+            case "videoSrc3": 
+              video4.setAttribute("position","10 3 0")
+              video4.setAttribute("width","3.5" )
+              video4.setAttribute("height","2.5" )
+              break;
+          }
+          console.log("man hinh lon chuyen sang man hinh nho");
+          flag = 0;
+          console.log('man hinh nho ' + flag);
+        }
+          
+        // let video3 = document.querySelector("#videoSrc3")
+        // video3.setAttribute("visible", !video3.getAttribute("visible"))
+
+ 
+
+        // let video2 = document.querySelector("#videoSrc2")
+        // video2.setAttribute("visible", !video2.getAttribute("visible"))
+
+ 
+
+        // let video1 = document.querySelector("#videoSr1")
+        // video1.setAttribute("position","0 3 0")
+        //  video1.setAttribute("width","16" )
+        //  video1.setAttribute("height","9" )
+
+ 
+
+        // let defaultPos = el.getAttribute('material').position;
+        // el.setAttribute("position", defaultPos);
+    
+    
+      })
+    }
+  })
+</script>
+    </head>
+    
+    <body>
+
+ 
+
+        <a-scene cursor="rayOrigin: mouse" background="color: red"> 
+          
+            <a-assets  >
+                <video id="video3" autoplay loop="true" src="video/Video.mp4" webkit-playsinline>
+                <video id="video2" autoplay loop="true" src="video/Video2.mp4" webkit-playsinline>
+                <video id="video" autoplay loop="true" src="video/Video3.mp4" webkit-playsinline>
+            </a-assets>
+        
+            <a-video id = "videoSrc1"  src="#video" width="3.5" height="2.5" position="-10 3 0" fo2>
+              <a-event name="mouseenter" scale="5 5 5" ></a-event>
+              <a-event name="click" scale="1 1 1" ></a-event>
+            </a-video>
+          
+             <a-video  id = "videoSrc3" src="#video3" width="3.5" height="2.5" position="0 5 0" fo2>
+              <a-event name="mouseenter" scale="5 5 5" ></a-event>
+              <a-event name="click" scale="1 1 1" ></a-event>
+            </a-video>
+
+ 
+
+            <a-video  id = "videoSrc2" src="#video2" width="3.5" height="2.5" position="10 3 0" fo2>
+              <a-event name="mouseenter" scale="5 5 5" ></a-event>
+              <a-event name="click" scale="1 1 1" ></a-event>
+            </a-video>
+           <!--  <a-box position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9" foo></a-box>
+             <a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder> --> 
+             <a-assets>
+    <img id="sky" src="h3.jpg">
+  </a-assets>
+  <a-sky src="#sky" ></a-sky>
+             <a-camera position="0 3 11">
+                <a-cursor color="blue">
+            </a-camera>
+ 
+
+            <!--  <a-sky src="image/sky.jpg"></a-sky> -->
+         <!--    <video autoplay id="video5" controls></video> -->
+        </a-scene>
+ 
+ 
+ 
+  <script>
+
+ 
+
+ 
+
+    function myFunction() {
+      document.getElementById("hello").innerHTML = "aaaaaaaaaaaaa";
+    }
+   
+   function playVideoVR(idCamera,url){
+    if(Hls.isSupported())
+    {
+        var video = document.getElementById(idCamera);
+        var hls = new Hls();
+        hls.loadSource(url);
+        hls.attachMedia(video);
+        hls.on(Hls.Events.MANIFEST_PARSED,function()
+        {
+            video.play();
+        });
+    }
+    else if (video.canPlayType('application/vnd.apple.mpegurl'))
+    {
+        video.src = url;
+        video.addEventListener('loadedmetadata',function()
+        {
+            video.play();
+        });
+    }
+  }
+  
+  
+  playVideoVR("video","http://172.18.14.15/hls/60737eba-679a-4e2b-9b8d-6a217556aca4.stream.m3u8");
+  playVideoVR("video2","http://172.18.14.15/hls/772d26e9-3eb9-47c1-ad01-0a85405da09d.stream.m3u8");
+  playVideoVR("video3","http://172.18.14.15/hls/077c301f-74f3-4021-906d-6861c2630ebc.stream.m3u8");
+  playVideoVR("video5","http://172.18.14.15/hls/a2bc26ab-65c3-43e3-a5ac-afd7e9df2933.stream.m3u8");
+  playVideoVR("video6","http://172.18.14.15/hls/6e70eb65-4af0-4396-ac95-5d9e6a602607.stream.m3u8");
+
+ 
+
+  </script>
+  </body>
+    
+
+ 
+
+</html>
